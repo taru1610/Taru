@@ -1,11 +1,11 @@
-
-
 import 'package:flutter/material.dart';
-import 'package:saksham/register.dart/';
-import 'package:saksham/news.dart/';
-import 'package:saksham/about.dart/';
-import 'package:saksham/schedule.dart/';
-import 'package:saksham/home.dart/';
+import 'register.dart';
+import 'schedule.dart';
+
+import 'about.dart';
+import 'home.dart';
+import 'news.dart';
+
 
 void main() {
   runApp(MyApp());
@@ -35,13 +35,13 @@ class _MyHomePageState extends State<MyHomePage> {
     switch(currentIndex){
       case 0: return News();
               //break;
-      case 0: return Schedule();
+      case 1: return Schedule();
               //break;
-      case 0: return Home();
+      case 2: return Home();
               //break;
-      case 0: return Register();
+      case 3: return Register();
               //break;
-      case 0: return About();
+      case 4: return About();
               //break;
       default: return Home();
               //break;
@@ -53,13 +53,7 @@ class _MyHomePageState extends State<MyHomePage> {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
-     body: //Container(
-        //decoration: BoxDecoration(
-          //image: DecorationImage(
-           // image: AssetImage("assets/background.jpg"),
-           // )
-          //),
-        //),
+     body:
         tabs(_currentIndex),
         bottomNavigationBar: BottomNavigationBar(
           selectedItemColor: Theme.of(context).primaryColor,
@@ -93,8 +87,8 @@ class _MyHomePageState extends State<MyHomePage> {
         ],
 
         onTap: (index){
-         _currentIndex = index;
           setState(() {
+             _currentIndex = index;
           });
         },
       ),
