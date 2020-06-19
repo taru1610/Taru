@@ -1,25 +1,29 @@
 import 'package:flutter/material.dart';
+import 'package:material_design_icons_flutter/material_design_icons_flutter.dart';
+import 'home/home.dart';
+import 'news/news.dart';
 import 'register.dart';
 import 'schedule.dart';
-
 import 'about.dart';
-import 'home.dart';
-import 'news.dart';
-
 
 void main() {
   runApp(MyApp());
 }
     
-class MyApp extends StatelessWidget{
+class MyApp extends StatefulWidget{
+  @override
+  _MyAppState createState() => _MyAppState();
+}
+
+class _MyAppState extends State<MyApp> {
   @override
   Widget build(BuildContext context) {
     return MaterialApp(
-    theme: ThemeData(primaryColor: Colors.purple , accentColor: Colors.white),
-    debugShowCheckedModeBanner: false,
-    home: MyHomePage(),
-  );
-}
+      theme: ThemeData(primaryColor: Colors.cyan[800] , accentColor: Colors.white),
+      debugShowCheckedModeBanner: false,
+      home: MyHomePage(),
+    );
+  }
 }
 
 class MyHomePage extends StatefulWidget {
@@ -34,18 +38,11 @@ class _MyHomePageState extends State<MyHomePage> {
   Widget tabs(int currentIndex){
     switch(currentIndex){
       case 0: return News();
-              //break;
       case 1: return Schedule();
-              //break;
       case 2: return Home();
-              //break;
       case 3: return Register();
-              //break;
       case 4: return About();
-              //break;
       default: return Home();
-              //break;
-
     }
     
   }
@@ -61,12 +58,12 @@ class _MyHomePageState extends State<MyHomePage> {
           currentIndex: _currentIndex,
           items:[
             BottomNavigationBarItem(
-              icon: Icon(Icons.new_releases),
+              icon: Icon(MdiIcons.newspaper),
               title: Text("News"),
           ),
 
             BottomNavigationBarItem(
-              icon: Icon(Icons.calendar_today),
+              icon: Icon(MdiIcons.calendarMonthOutline),
               title: Text("Schedule"),
           ),
 

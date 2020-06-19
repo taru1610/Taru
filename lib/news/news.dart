@@ -1,12 +1,10 @@
 import 'package:flutter/material.dart';
 import 'package:provider/provider.dart';
-import 'package:saksham/styleguide.dart';
-import 'app_state.dart';
+import 'package:saksham/helper/data.dart';
+import 'package:saksham/helper/news_data.dart';
+import '../background.dart';
 import 'category_widget.dart';
 import 'event_widget.dart';
-import 'home_page_background.dart';
-import 'model/categories.dart';
-import 'model/event.dart';
 
 class News extends StatelessWidget{
   @override
@@ -25,26 +23,32 @@ class News extends StatelessWidget{
                   crossAxisAlignment: CrossAxisAlignment.start,
                   children: <Widget>[
                     Padding(
-                      padding: const EdgeInsets.symmetric(horizontal: 20.0),
+                      padding: const EdgeInsets.symmetric(horizontal: 20.0,vertical: 10,),
                       child: Row(
+                        mainAxisAlignment: MainAxisAlignment.center,
                         children: <Widget>[
                           Text(
-                            "SAKSHAM",
-                            style: fadedTextStyle,
+                            "SAKSHAM ",
+                            style:  TextStyle(
+                              fontSize: 30,
+                              color: Colors.white,
+                              fontWeight: FontWeight.bold,
+                            )
                           ),
-                          Spacer(),
+                          
+                          Text(
+                            "NEWS",
+                            style: TextStyle(
+                              fontSize: 30,
+                              color: Colors.black,
+                              fontWeight: FontWeight.bold,
+                            ),
+                      ),
                         ],
                       ),
                     ),
                     Padding(
-                      padding: const EdgeInsets.symmetric(horizontal: 20.0),
-                      child: Text(
-                        "NEWS",
-                        style: whiteHeadingTextStyle,
-                      ),
-                    ),
-                    Padding(
-                      padding: const EdgeInsets.symmetric(vertical: 32.0,horizontal: 10.0),
+                      padding: const EdgeInsets.symmetric(vertical: 16.0,horizontal: 10.0),
                       child: Consumer<AppState>(
                         builder: (context, appState, _) => SingleChildScrollView(
                           scrollDirection: Axis.horizontal,

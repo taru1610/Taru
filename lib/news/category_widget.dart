@@ -1,9 +1,7 @@
 import 'package:flutter/material.dart';
 import "package:provider/provider.dart";
-import 'package:saksham/styleguide.dart';
-
-import 'app_state.dart';
-import 'model/categories.dart';
+import 'package:saksham/helper/data.dart';
+import '../style.dart';
 
 class CategoryWidget extends StatelessWidget {
   final Category category;
@@ -23,8 +21,8 @@ class CategoryWidget extends StatelessWidget {
       },
       child: Container(
         margin: const EdgeInsets.symmetric(horizontal: 8),
-        width: 120,
-        height: 100,
+        width: 110,
+        height: 80,
         decoration: BoxDecoration(
           border: Border.all(color: isSelected ? Colors.white : Color(0x99FFFFFF), width: 3),
           borderRadius: BorderRadius.all(Radius.circular(16)),
@@ -33,21 +31,29 @@ class CategoryWidget extends StatelessWidget {
         child: Column(
           mainAxisAlignment: MainAxisAlignment.center,
           children: <Widget>[
-            Image.asset(
+            Icon(
               category.icon,
-              height: 40,
-              width: 40,
-              fit: BoxFit.fitWidth,
-              color: isSelected ? Theme.of(context).primaryColor : Colors.white ,
+              color: isSelected ? Theme.of(context).primaryColor : Colors.white,
+              size: 40,
             ),
-            SizedBox(height: 10,),
+            SizedBox(height: 5,),
             Text(
-              category.name,
+              category.title,
               style: isSelected ? selectedCategoryTextStyle : categoryTextStyle,
             )
           ],
         ),
       ),
     );
+  }
+}
+
+class AppState extends ChangeNotifier {
+
+  int selectedCategoryId = 0;
+
+  void updateCategoryId(int selectedCategoryId) {
+    this.selectedCategoryId  = selectedCategoryId;
+    notifyListeners();
   }
 }
